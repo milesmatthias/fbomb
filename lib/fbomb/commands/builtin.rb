@@ -727,6 +727,12 @@ FBomb {
     end
   }
 
+  command(:imout){
+    call do |*args|
+      speak(msg = "http://i.imgur.com/lOd5sLe.gif")
+    end
+  }
+
   command(:miles){
     call do |*args|
       images = Google::Search::Image.new(:query => 'miles matthias', :image_size => :large)
