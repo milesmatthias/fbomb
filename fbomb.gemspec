@@ -17,7 +17,7 @@ Gem::Specification::new do |spec|
  "lib",
  "lib/fbomb",
  "lib/fbomb.rb",
- "lib/fbomb/campfire.rb",
+ "lib/fbomb/flowdawk.rb",
  "lib/fbomb/command.rb",
  "lib/fbomb/commands",
  "lib/fbomb/commands/builtin.rb",
@@ -31,7 +31,7 @@ Gem::Specification::new do |spec|
   spec.test_files = nil
 
   
-    spec.add_dependency(*["tinder"        , "~> 1.7.0"])
+    spec.add_dependency(*["flowdock"      , "~> 0.3.1"])
     spec.add_dependency(*["main"          , "~> 4.7.6"])
     spec.add_dependency(*["fukung"        , "~> 1.1.0"])
     spec.add_dependency(*["yajl-ruby"     , "~> 1.0.0"])

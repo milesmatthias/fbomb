@@ -19,7 +19,7 @@
 
     def dependencies
       {
-        'tinder'              =>  [ 'tinder'         , '>= 1.7.0'   ]  , 
+        'flowdock'            =>  [ 'flowdock'       , '>= 0.3.1'   ]  , 
         'yajl'                =>  [ 'yajl-ruby'      , '>= 0.8.2'   ]  , 
         'fukung'              =>  [ 'fukung'         , '>= 1.1.0'   ]  , 
         'main'                =>  [ 'main'           , '>= 4.7.6'   ]  ,
@@ -111,7 +111,7 @@
 #
   FBomb.load %w[
     util.rb
-    campfire.rb
+    flowdawk.rb
     command.rb
   ]
 

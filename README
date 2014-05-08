@@ -2,7 +2,7 @@ NAME
   fbomb
 
 SYNOPSIS
-  fbomb is the dangerous campfire bot
+  fbomb is the dangerous flowdock bot
 
 USAGE
   1) get going
@@ -13,7 +13,7 @@ USAGE
     ./bin/fbomb /chucknorris
     ./bin/fbomb /fukung canada
 
-  3) devastate your campfire room
+  3) devastate your flowdock flow
     ./bin/fbomb run
 
 CUSTOMIZE

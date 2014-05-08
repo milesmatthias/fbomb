@@ -15,7 +15,7 @@ module FBomb
     class << Command
       fattr(:table){ Table.new }
       fattr(:dir){ File.join(File.expand_path(File.dirname(__FILE__)), 'commands') }
-      fattr(:room)
+      fattr(:flow)
       fattr(:command_paths){ [] }
 
       def load(*args)
@@ -77,7 +77,7 @@ module FBomb
 
 ## instance methods
 #
-    fattr(:room){ self.class.room }
+    fattr(:flow){ self.class.flow }
     fattr(:path)
     fattr(:help)
     fattr(:setup)
@@ -110,18 +110,22 @@ module FBomb
       @call = call
     end
 
-    %w( speak paste ).each do |method|
+    %w( paste ).each do |method|
       module_eval <<-__, __FILE__, __LINE__
         def #{ method }(*args, &block)
-          room ? room.#{ method }(*args, &block) : puts(*args, &block)
+          flow ? flow.#{ method }(*args, &block) : puts(*args, &block)
         end
       __
+    end
+
+    def speak(*args, &block)
+      flow ? flow.push_to_chat(:content => args.join){ block } : puts(*args, &block)
     end
 
     %w( upload ).each do |method|
       module_eval <<-__, __FILE__, __LINE__
         def #{ method }(file, content_type = nil, filename = nil)
-          room ? room.#{ method }(file, content_type, filename) : p(file, content_type, filename)
+          flow ? flow.#{ method }(file, content_type, filename) : p(file, content_type, filename)
           file
         end
       __
