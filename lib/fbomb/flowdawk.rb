@@ -43,8 +43,8 @@ module FBomb
         @stream ||= (
           room = self
           Twitter::JSONStream.connect(
-            :path => "/room/#{ room.id }/live.json",
-            :host => 'streaming.campfirenow.com',
+            :path => "/#{ domain }/#{ room.name }",
+            :host => 'stream.flowdock.com',
             :auth => "#{ connection.token }:x"
           )
         )

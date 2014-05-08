@@ -113,7 +113,7 @@ Main {
       at_exit{ @flow.leave }
       @flow.push_to_chat(:content => "fbomb in da house...")
 
-      #url = URI.parse("http://#{ @token }:x@streaming.flowdawknow.com//flow/#{ @flow.id }/live.json")
+      url = URI.parse("http://#{ @token }:x@stream.flowdock.com/#{ @domain }/flow/#{ @flow.name }")
 
       trap('INT'){ exit }
 
