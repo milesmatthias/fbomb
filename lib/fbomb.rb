@@ -20,7 +20,8 @@
     def dependencies
       {
         'flowdock'            =>  [ 'flowdock'       , '>= 0.3.1'   ]  , 
-        'yajl'                =>  [ 'yajl-ruby'      , '>= 0.8.2'   ]  , 
+        'eventmachine'        =>  [ 'eventmachine'   , '>= 1.0.3'   ]  ,
+        'em-http-request'     =>  [ 'em-http-request', '>= 1.1.1'   ]  ,
         'fukung'              =>  [ 'fukung'         , '>= 1.1.0'   ]  , 
         'main'                =>  [ 'main'           , '>= 4.7.6'   ]  ,
         'nokogiri'            =>  [ 'nokogiri'       , '>= 1.5.0'   ]  ,
@@ -104,8 +105,6 @@
   ::FBomb.dependencies.each do |lib, dependency|
     require(lib)
   end
-  require "yajl/json_gem"     ### this *replaces* any other JSON.parse !
-  require "yajl/http_stream"  ### we really do need this
 
 ## load fbomb
 #

@@ -3,10 +3,10 @@ module FBomb
 
     module SearchExtension
       def search(term)
-        room = self
+        flow = self
         term = CGI.escape(term.to_s)
-        return_to_room_id = CGI.escape(room.id.to_s)
-        messages = connection.get("/search?term=#{ term }&return_to_room_id=#{ return_to_room_id }")
+        return_to_flow_id = CGI.escape(flow.id.to_s)
+        messages = connection.get("/search?term=#{ term }&return_to_flow_id=#{ return_to_flow_id }")
         if messages and messages.is_a?(Hash)
           messages = messages['messages']
         end
@@ -40,9 +40,9 @@ module FBomb
     module StreamExtension
       def stream
         @stream ||= (
-          room = self
+          flow = self
           Twitter::JSONStream.connect(
-            :path => "/#{ domain }/#{ room.name }",
+            :path => "/flows/#{ domain }/#{ flow.name }",
             :host => 'stream.flowdock.com',
             :auth => "#{ connection.token }"
           )

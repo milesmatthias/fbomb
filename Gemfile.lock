@@ -5,8 +5,18 @@ GEM
     arrayfields (4.7.4)
     chronic (0.6.7)
     coderay (1.1.0)
+    cookiejar (0.3.0)
     domain_name (0.5.18)
       unf (>= 0.0.5, < 1.0.0)
+    em-http-request (1.1.1)
+      addressable (>= 2.3.4)
+      cookiejar
+      em-socksify (>= 0.3)
+      eventmachine (>= 1.0.3)
+      http_parser.rb (>= 0.6.0.beta.2)
+    em-socksify (0.3.0)
+      eventmachine (>= 1.0.0.beta.4)
+    eventmachine (1.0.3)
     fattr (2.2.2)
     flowdock (0.3.1)
       httparty (~> 0.7)
@@ -17,6 +27,7 @@ GEM
       json
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http_parser.rb (0.6.0.beta.2)
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -57,12 +68,13 @@ GEM
     unf_ext (0.0.6)
     unidecode (1.0.0)
     webrobots (0.1.1)
-    yajl-ruby (1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  em-http-request
+  eventmachine
   flowdock (~> 0.3.1)
   fukung (~> 1.1.0)
   google-search (~> 1.0.2)
@@ -72,4 +84,3 @@ DEPENDENCIES
   pry
   systemu (~> 2.3.0)
   unidecode (~> 1.0.0)
-  yajl-ruby (~> 1.0.0)
