@@ -31,10 +31,14 @@ Main {
 
   def load_flow!
     @domain, @token, flow = config[:flowdawk].slice(:domain, :token, :flow).values
-    @flowdawk = FBomb::Flowdawk.new(@domain, :token => @token)
+    @flowdawk = FBomb::Flowdawk.new({
+                  :api_token => @token,
+                  :from => { name: 'Mr. Roboto', address: 'dojo4@dojo4.com' },
+                  :external_user_name => 'mr_roboto'
+                })
     @flowdawk.token = @token
-    @flow = @flowdawk.flow_for(flow)
-    FBomb::Command.flow = @flow
+    #@flow = @flowdawk.flow_for(flow)
+    FBomb::Command.flow = @flowdawk
   end
 
   def run_command!
@@ -108,12 +112,12 @@ Main {
     end
 
     def drop_fbombs!
-      FBomb::Command.flow = @flow
-      @flow.join
-      at_exit{ @flow.leave }
-      @flow.push_to_chat(:content => "fbomb in da house...")
+      FBomb::Command.flow = @flowdawk
+      #@flow.join
+      #at_exit{ @flow.leave }
+      @flowdawk.push_to_chat(:content => "fbomb in da house...")
 
-      url = URI.parse("http://#{ @token }:x@stream.flowdock.com/#{ @domain }/flow/#{ @flow.name }")
+      url = URI.parse("https://#{ @token }@stream.flowdock.com/#{ @domain }/flow/#{ config.flowdawk.flow }")
 
       trap('INT'){ exit }
 

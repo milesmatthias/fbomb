@@ -1,6 +1,5 @@
 module FBomb
-  class Flowdawk
-    include Flowdock
+  class Flowdawk < ::Flowdock::Flow
 
     module SearchExtension
       def search(term)
@@ -45,7 +44,7 @@ module FBomb
           Twitter::JSONStream.connect(
             :path => "/#{ domain }/#{ room.name }",
             :host => 'stream.flowdock.com',
-            :auth => "#{ connection.token }:x"
+            :auth => "#{ connection.token }"
           )
         )
       end
@@ -65,7 +64,7 @@ module FBomb
 
     def Flowdawk.new(*args, &block)
       allocate.tap do |instance|
-        instance.send(:initialize, *args, &block)
+        instance.send(:initialize, *args)
       end
     end
 
